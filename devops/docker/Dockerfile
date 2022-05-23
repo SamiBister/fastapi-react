@@ -11,9 +11,12 @@ RUN . /app/venv/bin/activate && poetry install  --no-dev && pip uninstall pip -y
 
 FROM python:3.10.4-slim-bullseye as prod
 
-COPY --from=venv /app/venv /app/venv
-
 RUN pip uninstall pip -y
+
+RUN adduser --system --no-create-home worker
+USER worker
+
+COPY --chown=worker:worker --from=venv /app/venv /app/venv
 
 ENV PATH /app/venv/bin:$PATH
 
