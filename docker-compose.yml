@@ -1,0 +1,35 @@
+version: "3,8"
+
+volumes:
+  api-data:
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: devops/docker/Dockerfile
+    command:  uvicorn app.main:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    ports:
+      - 8001:8000
+    networks:
+      - test_network
+
+  apidb:
+    container_name: fastapi-postgresdb
+    image: postgres:latest
+    networks:
+      - test_network
+    restart: unless-stopped
+    volumes:
+      - api-data:/var/lib/postgresql/data
+    environment:
+      # NOTE: POSTGRES_DB/USER/PASSWORD should match values in app container
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+
+
+
+networks:
+  test_network:
+

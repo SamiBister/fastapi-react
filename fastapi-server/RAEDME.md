@@ -30,7 +30,7 @@ poetry shell
 
 Start uvicorn
 ```bash
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 Test with browser
@@ -43,3 +43,7 @@ To exit poetry shell
 ```bash
 exit
 ```
+
+docker build -t koe/koe:1609-10 -f devops/docker/Dockerfile .
+docker run -p 8000:8000 -t -i koe/koe:1609-10
+docker run -ti koe/koe:1609-10 /bin/sh

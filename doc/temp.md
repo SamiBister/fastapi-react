@@ -28,3 +28,19 @@ For compilers to find bzip2 you may need to set:
 
 
 git remote add origin git@github-sbi:SamiBister/fastapi-react.git
+
+
+docker build -t koe/koe:1609 -f devops/docker/Dockerfile .
+
+docker run -p 8000:8000 -t -i koe/koe:1609
+
+
+docker exec -it koe/koe:1609-6   /bin/sh
+
+
+docker exec -it container-name sh
+
+docker run -ti koe/koe:1609-7 /bin/sh
+
+
+docker run -p 8000:8000 -t -i koe/koe:1609-7

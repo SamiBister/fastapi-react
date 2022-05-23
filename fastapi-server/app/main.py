@@ -4,7 +4,7 @@ from fastapi import Depends, FastAPI
 
 from app.internal import admin
 from app.routers import users, items
-from dependencies import get_token_header, get_query_token
+from app.dependencies import get_token_header, get_query_token
 
 app = FastAPI(dependencies=[Depends(get_query_token)])
 
