@@ -25,3 +25,6 @@ If you need to have bzip2 first in your PATH, run:
 For compilers to find bzip2 you may need to set:
   export LDFLAGS="-L/Users/samibister/src/homebrew/homebrew/opt/bzip2/lib"
   export CPPFLAGS="-I/Users/samibister/src/homebrew/homebrew/opt/bzip2/include"
+
+
+git remote add origin git@github-sbi:SamiBister/fastapi-react.git
