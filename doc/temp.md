@@ -40,7 +40,7 @@ docker exec -it koe/koe:1609-6   /bin/sh
 
 docker exec -it container-name sh
 
-docker run -ti koe/koe:1609-7 /bin/sh
+docker run -ti koe/koe:3 /bin/sh
 
 
 docker run -p 8000:8000 -t -i koe/koe:1609-7

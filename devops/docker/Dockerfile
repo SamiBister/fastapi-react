@@ -7,11 +7,14 @@ ENV PATH /root/.poetry/bin:$PATH
 WORKDIR /app
 COPY fastapi-server/pyproject.toml fastapi-server/poetry.lock ./
 RUN python -m venv --copies /app/venv
-RUN . /app/venv/bin/activate && poetry install  --no-dev
+RUN . /app/venv/bin/activate && poetry install  --no-dev && pip uninstall pip -y
 
 FROM python:3.10.4-slim-bullseye as prod
 
 COPY --from=venv /app/venv /app/venv
+
+RUN pip uninstall pip -y
+
 ENV PATH /app/venv/bin:$PATH
 
 WORKDIR /app
