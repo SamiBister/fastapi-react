@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220525 21:04:51.617" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220525 22:08:33.080" rpa="false" schemaversion="3">
 <suite id="s1" name="Sample Test" source="/workspace/fastapi-server/test-robot/sample_test">
 <test id="s1-t1" name="Headless Chrome - Create Webdriver" line="7">
 <kw name="Evaluate" library="BuiltIn">
@@ -7,89 +7,96 @@
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220525 21:04:52.322" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x4003ceb310&gt;</msg>
-<status status="PASS" starttime="20220525 21:04:52.320" endtime="20220525 21:04:52.322"/>
+<msg timestamp="20220525 22:08:33.253" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7ff33667eef0&gt;</msg>
+<status status="PASS" starttime="20220525 22:08:33.252" endtime="20220525 22:08:33.253"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>headless</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" starttime="20220525 21:04:52.323" endtime="20220525 21:04:52.323"/>
+<status status="PASS" starttime="20220525 22:08:33.253" endtime="20220525 22:08:33.253"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>disable-gpu</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" starttime="20220525 21:04:52.324" endtime="20220525 21:04:52.325"/>
+<status status="PASS" starttime="20220525 22:08:33.253" endtime="20220525 22:08:33.254"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>no-sandbox</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220525 22:08:33.254" endtime="20220525 22:08:33.254"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <var>${options}</var>
 <arg>${chrome_options}</arg>
 <arg>to_capabilities</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<msg timestamp="20220525 21:04:52.327" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': 'normal', 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu']}}</msg>
-<status status="PASS" starttime="20220525 21:04:52.325" endtime="20220525 21:04:52.327"/>
+<msg timestamp="20220525 22:08:33.254" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': 'normal', 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu', 'no-sandbox']}}</msg>
+<status status="PASS" starttime="20220525 22:08:33.254" endtime="20220525 22:08:33.255"/>
 </kw>
 <kw name="Create Webdriver" library="Selenium2Library">
 <arg>Remote</arg>
 <arg>command_executor=http://127.0.0.1:4444/wd/hub</arg>
 <arg>desired_capabilities=${options}</arg>
 <doc>Creates an instance of Selenium WebDriver.</doc>
-<msg timestamp="20220525 21:04:52.329" level="INFO">Creating an instance of the Remote WebDriver.</msg>
-<msg timestamp="20220525 21:04:52.346" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003ceb970&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.348" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003ceaef0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.350" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003cebe20&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.353" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg timestamp="20220525 21:04:52.356" level="FAIL">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003cebee0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
-<status status="FAIL" starttime="20220525 21:04:52.328" endtime="20220525 21:04:52.365"/>
+<msg timestamp="20220525 22:08:33.255" level="INFO">Creating an instance of the Remote WebDriver.</msg>
+<msg timestamp="20220525 22:08:33.259" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667f700&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.260" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667fa30&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.261" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ff70&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.262" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg timestamp="20220525 22:08:33.263" level="FAIL">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ee00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20220525 22:08:33.255" endtime="20220525 22:08:33.266"/>
 </kw>
 <kw name="Go To" library="Selenium2Library">
 <arg>http://cnn.com</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="NOT RUN" starttime="20220525 21:04:52.367" endtime="20220525 21:04:52.367"/>
+<status status="NOT RUN" starttime="20220525 22:08:33.266" endtime="20220525 22:08:33.267"/>
 </kw>
 <kw name="Maximize Browser Window" library="Selenium2Library">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" starttime="20220525 21:04:52.368" endtime="20220525 21:04:52.368"/>
+<status status="NOT RUN" starttime="20220525 22:08:33.267" endtime="20220525 22:08:33.267"/>
 </kw>
 <kw name="Capture Page Screenshot" library="Selenium2Library">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" starttime="20220525 21:04:52.368" endtime="20220525 21:04:52.368"/>
+<status status="NOT RUN" starttime="20220525 22:08:33.267" endtime="20220525 22:08:33.267"/>
 </kw>
-<status status="FAIL" starttime="20220525 21:04:52.317" endtime="20220525 21:04:52.371">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003cebee0&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+<status status="FAIL" starttime="20220525 22:08:33.252" endtime="20220525 22:08:33.268">MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ee00&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
 </test>
-<test id="s1-t2" name="Headless Chrome - Open Browser" line="20">
+<test id="s1-t2" name="Headless Chrome - Open Browser" line="21">
 <kw name="Evaluate" library="BuiltIn">
 <var>${chrome_options}</var>
 <arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
 <arg>sys, selenium.webdriver</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220525 21:04:52.377" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x4003d4ce20&gt;</msg>
-<status status="PASS" starttime="20220525 21:04:52.375" endtime="20220525 21:04:52.377"/>
+<msg timestamp="20220525 22:08:33.271" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7ff3365a0af0&gt;</msg>
+<status status="PASS" starttime="20220525 22:08:33.270" endtime="20220525 22:08:33.271"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>headless</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" starttime="20220525 21:04:52.378" endtime="20220525 21:04:52.379"/>
+<status status="PASS" starttime="20220525 22:08:33.271" endtime="20220525 22:08:33.272"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <arg>${chrome_options}</arg>
 <arg>add_argument</arg>
 <arg>disable-gpu</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" starttime="20220525 21:04:52.380" endtime="20220525 21:04:52.382"/>
+<status status="PASS" starttime="20220525 22:08:33.272" endtime="20220525 22:08:33.273"/>
 </kw>
 <kw name="Call Method" library="BuiltIn">
 <var>${options}</var>
 <arg>${chrome_options}</arg>
 <arg>to_capabilities</arg>
 <doc>Calls the named method of the given object with the provided arguments.</doc>
-<msg timestamp="20220525 21:04:52.385" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': 'normal', 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu']}}</msg>
-<status status="PASS" starttime="20220525 21:04:52.382" endtime="20220525 21:04:52.385"/>
+<msg timestamp="20220525 22:08:33.274" level="INFO">${options} = {'browserName': 'chrome', 'pageLoadStrategy': 'normal', 'goog:chromeOptions': {'extensions': [], 'args': ['headless', 'disable-gpu']}}</msg>
+<status status="PASS" starttime="20220525 22:08:33.273" endtime="20220525 22:08:33.274"/>
 </kw>
 <kw name="Open Browser" library="Selenium2Library">
 <arg>http://cnn.com</arg>
@@ -97,29 +104,29 @@
 <arg>remote_url=http://localhost:4444/wd/hub</arg>
 <arg>desired_capabilities=${options}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220525 21:04:52.388" level="INFO">Opening browser 'chrome' to base url 'http://cnn.com' through remote server at 'http://localhost:4444/wd/hub'.</msg>
-<msg timestamp="20220525 21:04:52.399" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d150&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.402" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d2a0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.405" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d3f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.407" level="INFO">Cannot capture screenshot because no browser is open.</msg>
-<msg timestamp="20220525 21:04:52.409" level="FAIL">MaxRetryError: HTTPConnectionPool(host='localhost', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d540&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
-<status status="FAIL" starttime="20220525 21:04:52.386" endtime="20220525 21:04:52.412"/>
+<msg timestamp="20220525 22:08:33.276" level="INFO">Opening browser 'chrome' to base url 'http://cnn.com' through remote server at 'http://localhost:4444/wd/hub'.</msg>
+<msg timestamp="20220525 22:08:33.278" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a1180&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.281" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a12d0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.282" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ea40&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.284" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg timestamp="20220525 22:08:33.284" level="FAIL">MaxRetryError: HTTPConnectionPool(host='localhost', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a0b50&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</msg>
+<status status="FAIL" starttime="20220525 22:08:33.275" endtime="20220525 22:08:33.285"/>
 </kw>
 <kw name="Maximize Browser Window" library="Selenium2Library">
 <doc>Maximizes current browser window.</doc>
-<status status="NOT RUN" starttime="20220525 21:04:52.413" endtime="20220525 21:04:52.414"/>
+<status status="NOT RUN" starttime="20220525 22:08:33.286" endtime="20220525 22:08:33.286"/>
 </kw>
 <kw name="Capture Page Screenshot" library="Selenium2Library">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="NOT RUN" starttime="20220525 21:04:52.414" endtime="20220525 21:04:52.414"/>
+<status status="NOT RUN" starttime="20220525 22:08:33.286" endtime="20220525 22:08:33.286"/>
 </kw>
-<status status="FAIL" starttime="20220525 21:04:52.373" endtime="20220525 21:04:52.416">MaxRetryError: HTTPConnectionPool(host='localhost', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d540&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
+<status status="FAIL" starttime="20220525 22:08:33.269" endtime="20220525 22:08:33.287">MaxRetryError: HTTPConnectionPool(host='localhost', port=4444): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a0b50&gt;: Failed to establish a new connection: [Errno 111] Connection refused'))</status>
 </test>
 <kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20220525 21:04:52.419" endtime="20220525 21:04:52.420"/>
+<status status="PASS" starttime="20220525 22:08:33.289" endtime="20220525 22:08:33.289"/>
 </kw>
-<status status="FAIL" starttime="20220525 21:04:51.623" endtime="20220525 21:04:52.420"/>
+<status status="FAIL" starttime="20220525 22:08:33.081" endtime="20220525 22:08:33.289"/>
 </suite>
 <statistics>
 <total>
@@ -132,11 +139,11 @@
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20220525 21:04:52.346" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003ceb970&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.348" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003ceaef0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.350" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003cebe20&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.399" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d150&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.402" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d2a0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
-<msg timestamp="20220525 21:04:52.405" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x4003d4d3f0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.259" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667f700&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.260" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667fa30&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.261" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ff70&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.278" level="WARN">Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a1180&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.281" level="WARN">Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff3365a12d0&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
+<msg timestamp="20220525 22:08:33.282" level="WARN">Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('&lt;urllib3.connection.HTTPConnection object at 0x7ff33667ea40&gt;: Failed to establish a new connection: [Errno 111] Connection refused')': /wd/hub/session</msg>
 </errors>
 </robot>

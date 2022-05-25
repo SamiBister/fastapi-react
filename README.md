@@ -24,5 +24,5 @@ docker run \
  --volume "$PWD/results":/home/robot/results \
  robotframework/rfdocker:latest \
  tests
+google-chrome-stable  --headless --disable-gpu --no-sandbox --remote-debugging-port=4444 https://jippamaommdom.com
 
-google-chrome-stable  --headless --disable-gpu --remote-debugging-port=4444 https://chromestatus.com
