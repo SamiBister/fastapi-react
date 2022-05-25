@@ -86,6 +86,17 @@ RUN wget "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$
     && chmod u+x terracognita-linux-amd64 \
     && chown -R ${USERNAME} /home/${USERNAME}
 
+RUN apt-get update && \
+    apt-get install -y gnupg wget curl unzip --no-install-recommends && \
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+    echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
+    apt-get update -y && \
+    apt-get install -y google-chrome-stable && \
+    CHROMEVER=$(google-chrome --product-version | grep -o "[^\.]*\.[^\.]*\.[^\.]*") && \
+    DRIVERVER=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROMEVER") && \
+    wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
+    unzip /chromedriver/chromedriver* -d /chromedriver
+
 USER ${USERNAME}
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -  \
@@ -93,7 +104,7 @@ RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-
    && cd $HOME ; curl -s https://raw.githubusercontent.com/armosec/kubescape/master/install.sh | /bin/bash
 
 
-ENV PATH=$PATH:/home/${USERNAME}/istio-1.13.3/bin:/home/${USERNAME}/.poetry/bin
+ENV PATH=$PATH:/home/${USERNAME}/istio-1.13.3/bin:/home/${USERNAME}/.poetry/bin:/chromedriver
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 VOLUME [ "/var/lib/docker" ]

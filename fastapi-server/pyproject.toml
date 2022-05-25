@@ -12,6 +12,20 @@ uvicorn = {extras = ["standard"], version = "^0.17.6"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
+robotframework = "^5.0.1"
+selenium = "^4.1.5"
+robotframework-selenium2library = "^3.0.0"
+webdrivermanager = "^0.10.0"
+pylint = "^2.13.9"
+pyflakes = "^2.4.0"
+pycodestyle = "^2.8.0"
+pydocstyle = "^6.1.1"
+bandit = "^1.7.4"
+mypy = "^0.960"
+black = "^22.3.0"
+isort = "^5.10.1"
+robotframework-requests = "^0.9.3"
+xvfbwrapper = "^0.2.9"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

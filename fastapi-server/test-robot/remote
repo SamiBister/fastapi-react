@@ -1,0 +1,12 @@
+
+*** Settings ***
+Library     Selenium2Library
+
+*** Test Cases ***
+Headless Browser Test
+    [Setup]    Open Browser    https://stackoverflow.com    Headless Chrome
+    Maximize Browser Window
+
+    Title Should Be    Stack Overflow - Where Developers Learn, Share, & Build Careers
+
+    [Teardown]    Close Browser
