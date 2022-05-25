@@ -47,3 +47,8 @@ exit
 docker build -t koe/koe:1609-10 -f devops/docker/Dockerfile .
 docker run -p 8000:8000 -t -i koe/koe:1609-10
 docker run -ti koe/koe:1 /bin/sh
+
+
+docker build -t koe/koe:0521-1 -f devops/docker/frontend/Dockerfile .
+
+docker run -p 80:80 -t -i oe/koe:0521-1 

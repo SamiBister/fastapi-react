@@ -1,0 +1,17 @@
+node_modules
+npm-debug.log
+devops
+client
+build
+.github
+.devcontainer
+migrations
+docker
+docker-compose.yml
+Dockerfile
+README.md
+.eslintrc.json
+.env.example
+.gitignore
+.DS_Store
+.git
