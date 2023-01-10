@@ -8,6 +8,8 @@ networks:
 
 services:
   fastapi:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     #platform: linux/amd64
     init: true
     container_name: fastapi-dev
@@ -39,9 +41,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker-host.sock
       - ..:/workspace:cached
-      - ~/.kube:/home/node/.kube
-      - ~/.ssh:/home/node/.ssh
-      - ~/.gitconfig:/home/node/.gitconfig
+      - ~/.kube:/home/vscode/.kube
+      - ~/.ssh:/home/vscode/.ssh
+      - ~/.gitconfig:/home/vscode/.gitconfig
       - ~/.aws:/home/vscode/.aws
 
 
@@ -52,7 +54,7 @@ services:
     user: vscode
 
 
-  harvestdb:
+  fastapidb:
     container_name: fastapi-postgresdb
     image: postgres:latest
     networks:

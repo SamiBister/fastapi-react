@@ -55,6 +55,7 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         ansible \
         jq \
         postgresql-client \
+        software-properties-common \
     && apt-get -y -q autoremove \
     && rm -rf /var/lib/apt/lists/
 
@@ -87,7 +88,10 @@ RUN wget "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$
     && chown -R ${USERNAME} /home/${USERNAME}
 
 RUN apt-get update && \
-    apt-get install -y gnupg wget curl unzip --no-install-recommends && \
+    apt-get install -y gnupg wget curl unzip --no-install-recommends udev && \
+    apt-get install -y xvfb wget ca-certificates fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 \
+       libatspi2.0-0 libcups2 libdbus-1-3 libgbm1 libgtk-3-0 libnspr4 libnss3 \
+       libxcomposite1 libxkbcommon0 libxrandr2 xdg-utils ntpdate openssl dbus fonts-freefont-ttf fluxbox procps tzdata && \
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
     echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list && \
     apt-get update -y && \
@@ -97,16 +101,31 @@ RUN apt-get update && \
     wget -q --continue -P /chromedriver "http://chromedriver.storage.googleapis.com/$DRIVERVER/chromedriver_linux64.zip" && \
     unzip /chromedriver/chromedriver* -d /chromedriver
 
+
+# RUN RUN add-apt-repository -y ppa:mozillateam/firefox-next && \
+#     apt-get update && \
+#     apt-get install -y firefox && \
+#     wget https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz  && \
+#     tar -xvzf geckodriver-v0.29.0-linux64.tar.gz  && \
+#     chmod +x geckodriver  && \
+#     mv geckodriver /usr/local/bin/  && \
+#     export MOZ_HEADLESS=1
+
 USER ${USERNAME}
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -  \
    && cd $HOME ; curl -L https://istio.io/downloadIstio | ISTIO_VERSION=${ISTIO_VERSION} TARGET_ARCH=${TARGET_ARCH} sh - \
    && cd $HOME ; curl -s https://raw.githubusercontent.com/armosec/kubescape/master/install.sh | /bin/bash
 
-
+#RUN MOZ_HEADLESS1
 ENV PATH=$PATH:/home/${USERNAME}/istio-1.13.3/bin:/home/${USERNAME}/.poetry/bin:/chromedriver
+ENV SCREEN_WIDTH 1280
+ENV SCREEN_HEIGHT 720
+ENV SCREEN_DEPTH 16
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
+EXPOSE 3000
+EXPOSE 4444
 VOLUME [ "/var/lib/docker" ]
 VOLUME [ "/home/${USERNAME}/.kube" ]
 VOLUME [ "/home/${USERNAME}/.ssh" ]

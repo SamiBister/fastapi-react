@@ -10,6 +10,7 @@ fastapi = "^0.78.0"
 SQLAlchemy = "^1.4.36"
 uvicorn = {extras = ["standard"], version = "^0.17.6"}
 
+
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 robotframework = "^5.0.1"
@@ -26,6 +27,19 @@ black = "^22.3.0"
 isort = "^5.10.1"
 robotframework-requests = "^0.9.3"
 xvfbwrapper = "^0.2.9"
+robotframework-xvfb = "^1.2.2"
+certifi = "^2022.5.18"
+asn1crypto = "^1.5.1"
+bcrypt = "^3.2.2"
+robotframework-sshlibrary = "^3.8.0"
+cryptography = "^37.0.2"
+pyOpenSSL = "^22.0.0"
+idna = "^3.3"
+requests = {extras = ["security"], version = "^2.27.1"}
+robotframework-browser = "^13.0.0"
+robotframework-jsonlibrary = "^0.3.1"
+robotframework-whitelibrary = "^1.6.0"
+robotframework-seleniumlibrary = "^6.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

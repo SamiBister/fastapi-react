@@ -23,3 +23,7 @@ app.include_router(
 @app.get("/")
 async def root():
     return {"message": "Hello Bigger Applications!"}
+
+@app.get("/back")
+async def root():
+    return {"message": "This is from backend !!!!"}
